@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Material Icons -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- CSS File -->
+
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <title>Youtube</title>
+     {% block head %}{% endblock %}
+  </head>
+  <body>
+    <!-- Header Starts -->
+    <div class="header">
+      <div class="header__left">
+        <i id="menu" class="material-icons">menu</i>
+       <img src="{{ url_for('static', filename='yt-logo.png') }}">
+      </div>
+
+      <div class="header__search">
+        <form action="/search" method="POST">
+          <input type="text" name="search" placeholder="YouTube Channel ID" />
+          <button type="submit" ><i class="material-icons">search</i></button>
+
+        </form>
+      </div>
+
+      <div class="header__icons">
+
+        <i class="material-icons">videocam</i>
+
+        <i class="material-icons">notifications</i>
+        <i class="material-icons display-this">account_circle</i>
+      </div>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+    <div class="mainBody">
+      <!-- Sidebar Starts -->
+      <div class="sidebar">
+        <div class="sidebar__categories">
+          <div class="sidebar__category">
+            <i class="material-icons">home</i>
+            <a href="/"><span>Home</span></a>
+          </div>
+
+
+        </div>
+        <hr />
+        <div class="sidebar__categories">
+            {% for item in chanels %}
+          <div class="sidebar__category">
+            <i class="material-icons">account_circle</i>
+            <span><a href="/channeldetails/{{item[0]}}">{{item[1]}}</a></span>
+          </div>
+          {% endfor %}
+        </div>
+        <hr />
+      </div>
+      <!-- Sidebar Ends -->
+
+      <!-- Videos Section -->
+      <div class="videos">
+         <!--<h1>Recommended</h1>-->
+
+          <!-- Single Video starts -->
+           {% block body %}{% endblock %}
+          <!-- Single Video Ends -->
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <!-- Main Body Ends -->
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'shared.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+ <div class="videos__container">
+   {% for item in videosList %}
+     <div class="video">
+            <div class="video__thumbnail">
+                   <a href="https://www.youtube.com/watch?v={{item[0]}}" target="_blank">
+              <img src="{{item[5]}}" alt="" />
+                   </a>
+            </div>
+            <div class="video__details">
+              <div class="author">
+
+                        <img src="https://yt3.ggpht.com/LcVfKljG-Nz0A1-15S5QDqRtGrp0BV9lOZ4tqFG0RZooaP5FYCnAYMU14LQs77xNPGvLXA47Jg=s88-c-k-c0x00ffffff-no-rj" alt="" />
+
+
+              </div>
+              <div class="title">
+
+                <h3>
+                 {{item[1]}}
+                </h3>
+               <p class="views">  {{item[3]}} views</p>
+              </div>
+            </div>
+          </div>
+     {% endfor %}
+ </div>
+{% endblock %}
